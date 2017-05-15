@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign In</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}"/>
+    <link href="../../../resources/css/Register.css" rel="stylesheet" media="screen" th:href="@{/resources/css/Register.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login via site</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="" action="#" method="post" th:action="@{/authenticate}">
+                        <th:block th:if="${param.error != null}">
+                            <div th:replace="fragments/components :: alert (type='danger', message=${session[SPRING_SECURITY_LAST_EXCEPTION]})">
+
+                            </div>
+                        </th:block>
+                        <fieldset>
+                            <legend>Please Login</legend>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label"><i class="fa fa-envelope fa" aria-hidden="true"></i></label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email"
+                                           name="username"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+                                           name="password"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="_spring_security_remember_me"/>Ramember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button type="submit" class="btn btn-default">Login</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <p>New User so Register <a href="signup" th:href="@{/signup}">Register</a></p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
